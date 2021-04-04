@@ -8,14 +8,14 @@ const TensorFlowService = use('App/Services/TensorFlowService');
 
 
 const size = 900;
-const brainType = 'contourBrain.txt';
+const brainType = 'contourBrain.bin';
 
 let ashileyClassification = {};
 let ashileyResponse;
 
 class AshileyContourPredict {
 
-    async trainContour(className, limit) {
+    async trainContour(className, limit = 8) {
 
         for (let k = 0; k < className.length; k++) {
 

@@ -5,13 +5,15 @@ const Route = use('Route')
 
 //train routes image color
 Route.get('/trainRGB', 'BrainController.ashileyTrainRGBChanels');
-Route.get('/predictRGB/:file','BrainController.predictRGBChanels');
-
-//train routes image contour
-Route.get('/trainContour', 'BrainController.contourTrain');
-Route.get('/predictContour/:file', 'BrainController.countourPredict');
+Route.post('/predictRGB','BrainController.predictRGBChanels');
 
 //train neural network
 Route.get('/trainNeuralNetWork', 'BrainController.trainNeuralNetWork');
-Route.get('/predictNeuralNetWork/:file', 'BrainController.predictNeuralNetWork');
+Route.post('/predictNeuralNetWork', 'BrainController.predictNeuralNetWork');
+
+
+//train routes image contour
+// warning - JavaScript heap out of memory
+Route.get('/trainContour', 'BrainController.contourTrain');
+Route.post('/predictContour', 'BrainController.countourPredict');
 

@@ -4,6 +4,8 @@ const AshileyRGBPredictCotex = use("App/Cortex/AshileyRGBpredict");
 const AshileyContourPredict = use("App/Cortex/AshileyContourPredict");
 const AshileyRNAPredict = use("App/Cortex/AshileyRNAPredict");
 
+const UploadImageService = use('App/Services/UploadImageService');
+
 const className = ['document', 'normal', 'porn', 'sexy', 'ugly-gesture'];
 const limit = 15;
 
@@ -29,13 +31,19 @@ class BrainController {
 
     }
 
-    async predictRGBChanels({ response, params }) {
+    async predictRGBChanels({ response, request }) {
 
         try {
+           
+            let uploadImageService = new UploadImageService();
 
-            const fileName = params.file;
+            let fileName = await uploadImageService.uploadFile(request);
+
             let ashileyRGBPredictCotex = new AshileyRGBPredictCotex();
             let ashileyResponse = await ashileyRGBPredictCotex.predictRGBChanels(fileName);
+
+            await uploadImageService.removeFile(fileName);
+
             if (ashileyResponse) {
                 return response.status(200).send(ashileyResponse);
             } else {
@@ -69,13 +77,17 @@ class BrainController {
 
     }
 
-    async countourPredict({ response, params }) {
+    async countourPredict({ response, request }) {
         try {
 
-            let fileName = params.file;
+            let uploadImageService = new UploadImageService();
+
+            let fileName = await uploadImageService.uploadFile(request);
 
             let ashileyContourPredict = new AshileyContourPredict();
             let ashileyResponse = await ashileyContourPredict.predictContour(fileName);
+
+            await uploadImageService.removeFile(fileName);
 
             if (ashileyResponse) {
                 return response.status(200).send(ashileyResponse);
@@ -109,14 +121,18 @@ class BrainController {
 
     }
 
-    async predictNeuralNetWork({ response, params }) {
+    async predictNeuralNetWork({ response, request }) {
         try {
 
-            let fileName = params.file;
+            let uploadImageService = new UploadImageService();
+
+            let fileName = await uploadImageService.uploadFile(request);
 
             let ashileyRNAPredict = new AshileyRNAPredict();
             let ashileyResponse = await ashileyRNAPredict.predictRGBChanels(fileName, className);
 
+            await uploadImageService.removeFile(fileName);
+            
             if (ashileyResponse) {
                 return response.status(200).send(ashileyResponse);
             } else {
