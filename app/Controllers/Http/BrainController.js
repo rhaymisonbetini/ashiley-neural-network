@@ -3,6 +3,7 @@
 const AshileyRGBPredictCotex = use("App/Cortex/AshileyRGBpredict");
 const AshileyContourPredict = use("App/Cortex/AshileyContourPredict");
 const AshileyRNAPredict = use("App/Cortex/AshileyRNAPredict");
+const AshileyTextIdentification = use("App/Cortex/AshileyTextIdentification");
 
 const UploadImageService = use('App/Services/UploadImageService');
 
@@ -142,6 +143,24 @@ class BrainController {
         } catch (e) {
             console.log(e);
             return response.status(500).send(e);
+        }
+    }
+
+    async trainText({response}){
+        try {
+
+            let ashileyTextIdentification = new AshileyTextIdentification();
+            let learned = await ashileyTextIdentification.train();
+
+            if (learned) {
+                return response.status(200).send({ message: 'Ashiley learned' });
+            } else {
+                return response.status(406).send({ message: 'NOT ACCEPTABLE' });
+            }
+
+        } catch (e) {
+            console.log(e)
+            return response.status(500).send(e)
         }
     }
 

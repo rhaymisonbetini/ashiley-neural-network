@@ -17,3 +17,4 @@ Route.post('/predictNeuralNetWork', 'BrainController.predictNeuralNetWork');
 Route.get('/trainContour', 'BrainController.contourTrain');
 Route.post('/predictContour', 'BrainController.countourPredict');
 
+Route.get('/trainText', 'BrainController.trainText');
