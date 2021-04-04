@@ -63,7 +63,7 @@ class AshileyRNAPredict {
     }
 
 
-    async predictRGBChanels(fileName) {
+    async predictRGBChanels(fileName, className) {
 
         await getColors(path.join(Helpers.publicPath(`files/`), `${fileName}.jpg`)).then(async (colors) => {
 
@@ -73,17 +73,8 @@ class AshileyRNAPredict {
             let rnaTensorFlowService = new RNATensorFlowService(config);
 
             let predict = await rnaTensorFlowService.predict(arrayColors);
-
-            predict = predict[0];
-
-            ashileyResponse.classification = className[Number(parseFloat(predict).toFixed(0))].toString().trim();
-
-            // predict > 0 ? ashileyResponse.percentPositivo = (1 - predict) * 100 : ashileyResponse.percentPositivo = (100 - predict) * 100;
-            // ashileyResponse.percentNegative = 100 - ashileyResponse.percentPositivo;
-
-            // ashileyResponse.percentNegative = parseFloat(ashileyResponse.percentNegative).toFixed(4);
-            // ashileyResponse.percentPositivo = parseFloat(ashileyResponse.percentPositivo).toFixed(4);
-
+            ashileyResponse.classification= className[Number(parseFloat(predict[0]).toFixed(0))].toString().trim();
+          
         });
 
         return ashileyResponse;

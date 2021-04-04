@@ -115,7 +115,7 @@ class BrainController {
             let fileName = params.file;
 
             let ashileyRNAPredict = new AshileyRNAPredict();
-            let ashileyResponse = await ashileyRNAPredict.predictRGBChanels(fileName);
+            let ashileyResponse = await ashileyRNAPredict.predictRGBChanels(fileName, className);
 
             if (ashileyResponse) {
                 return response.status(200).send(ashileyResponse);
