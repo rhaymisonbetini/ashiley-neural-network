@@ -6,8 +6,7 @@ const Jimp = require('jimp');
 const WriteBrainService = use('App/Services/WriteBrainService');
 const TensorFlowService = use('App/Services/TensorFlowService');
 
-const className = ['document', 'normal', 'porn', 'sexy', 'ugly-gesture'];
-const limit = 8;
+
 const size = 900;
 const brainType = 'contourBrain.txt';
 
@@ -16,7 +15,7 @@ let ashileyResponse;
 
 class AshileyContourPredict {
 
-    async trainContour() {
+    async trainContour(className, limit) {
 
         for (let k = 0; k < className.length; k++) {
 
@@ -24,7 +23,7 @@ class AshileyContourPredict {
 
             for (let i = 1; i <= limit; i++) {
                 let index = i.toString();
-                index.length <= 1 ? index = '0'.concat(index) : null;
+                i <= 9 ? index = '0'.concat(index) : null;
                 let dirFile = `${dir}/${className[k]}${index}.jpg`;
                 let classFullName = className[k] + index;
                 await this.resizeJimp(dirFile, classFullName, className[k]);
