@@ -29,7 +29,8 @@
     "@tensorflow/tfjs": "^3.3.0",
     "get-image-colors": "^2.0.0",
     "jimp": "^0.6.4",
-    "move-file": "^1.2.0"
+    "move-file": "^1.2.0",
+    "tfjs-node-save": "0.0.2"
   },
   "devDependencies": {},
   "autoload": {

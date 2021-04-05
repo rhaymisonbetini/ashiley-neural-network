@@ -1,5 +1,6 @@
 'use strict';
 const tf = require('@tensorflow/tfjs');
+require('tfjs-node-save');
 const Helpers = use('Helpers')
 
 class TensorTextService {
@@ -14,6 +15,15 @@ class TensorTextService {
         const y = tf.tensor(classes, [classes.length, 1]);
 
         await model.fit(x, y, { epochs: 500 });
+        let response = await this.salvar(model);
+        return response;
+
+    }
+
+    async  salvar(model) {
+        const salvo = await model.save('file://./public/brainfiles');
+        if(salvo) return true;
+        else return false;
     }
 
 }
