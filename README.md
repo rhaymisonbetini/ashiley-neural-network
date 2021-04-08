@@ -1,4 +1,5 @@
 # ASHILEY NEURAL-NETWORK
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Ashiley is an open project aiming to perform the classification of images and texts with ML 100% in Javascript.
 Every system runs under Node.js and the Adonis.js framework along with Google's TensorFlow.js.
