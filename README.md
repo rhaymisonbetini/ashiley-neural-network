@@ -6,7 +6,7 @@ All templates and files are stored in binaries or .txt
 
 # 1 Installation
 ``
-git clone
+git clone <br/>
 cd ashiley-neural-network
 npm install
 adonis serves --dev
