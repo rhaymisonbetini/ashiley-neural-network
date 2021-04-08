@@ -33,13 +33,13 @@ All training documents are located inside the public folder.
  In this version only JPG formats are allowed.
  
  * photo training routes <br/>
-    GET: trainRGB -> Training based on RGB color scale.
-    It is advisable to use it for comparison and color classification,
-    such as a can of coca-cola
+   GET: trainRGB -> Training based on RGB color scale.
+   It is advisable to use it for comparison and color <br/>
+   classification, such as a can of coca-cola
 
-    GET: trainContour -> Training based on color scale and
+   GET: trainContour -> Training based on color scale and
    photo outlines. In this training, resizing takes place
    of pictures
    
-    GET: trainNeuralNetWork -> ML-based training with
-    Google's TensorFlow. Level of accuracy very high.
+   GET: trainNeuralNetWork -> ML-based training with
+   Google's TensorFlow. Level of accuracy very high.
