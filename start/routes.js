@@ -17,4 +17,10 @@ Route.post('/predictNeuralNetWork', 'BrainController.predictNeuralNetWork');
 Route.get('/trainContour', 'BrainController.contourTrain');
 Route.post('/predictContour', 'BrainController.countourPredict');
 
+//train text tensor flow
 Route.get('/trainText', 'BrainController.trainText');
+Route.post('/predictText', 'BrainController.predictText');
+
+//train text Bayes
+Route.get('/trainNavy', 'BrainController.trainNavy');
+Route.post('/predictNavy', 'BrainController.predictNavy');

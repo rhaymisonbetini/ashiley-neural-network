@@ -15,6 +15,11 @@ class WriteBrainService {
         return JSON.parse(classification.toString().trim());
     }
 
+    async readBrainBin(fileName) {
+        let classification = fs.readFileSync((Helpers.publicPath(`brainfiles/${fileName}`, { encoding: 'utf8' })));
+        return JSON.parse(classification.toString().trim());
+    }
+
     async findFile(file) {
         return fs.readFileSync(file);
     }
@@ -23,7 +28,7 @@ class WriteBrainService {
         return fs.existsSync(file);
     }
 
-    async removeFile(file){
+    async removeFile(file) {
         return fs.unlinkSync(file);
     }
 

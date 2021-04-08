@@ -4,6 +4,7 @@ const AshileyRGBPredictCotex = use("App/Cortex/AshileyRGBpredict");
 const AshileyContourPredict = use("App/Cortex/AshileyContourPredict");
 const AshileyRNAPredict = use("App/Cortex/AshileyRNAPredict");
 const AshileyTextIdentification = use("App/Cortex/AshileyTextIdentification");
+const AshileyTextBayesIdentification = use("App/Cortex/AshileyTextBayesIdentification");
 
 const UploadImageService = use('App/Services/UploadImageService');
 
@@ -35,7 +36,7 @@ class BrainController {
     async predictRGBChanels({ response, request }) {
 
         try {
-           
+
             let uploadImageService = new UploadImageService();
 
             let fileName = await uploadImageService.uploadFile(request);
@@ -133,7 +134,7 @@ class BrainController {
             let ashileyResponse = await ashileyRNAPredict.predictRGBChanels(fileName, className);
 
             await uploadImageService.removeFile(fileName);
-            
+
             if (ashileyResponse) {
                 return response.status(200).send(ashileyResponse);
             } else {
@@ -146,7 +147,7 @@ class BrainController {
         }
     }
 
-    async trainText({response}){
+    async trainText({ response }) {
         try {
 
             let ashileyTextIdentification = new AshileyTextIdentification();
@@ -154,6 +155,64 @@ class BrainController {
 
             if (learned) {
                 return response.status(200).send({ message: 'Ashiley learned' });
+            } else {
+                return response.status(406).send({ message: 'NOT ACCEPTABLE' });
+            }
+
+        } catch (e) {
+            console.log(e)
+            return response.status(500).send(e)
+        }
+    }
+
+    async predictText({ request, response }) {
+        try {
+
+            let textToAnalise = request.all();
+
+            let ashileyTextIdentification = new AshileyTextIdentification();
+
+            let ashileyResponse = await ashileyTextIdentification.predictText(textToAnalise.text);
+            if (ashileyResponse) {
+                return response.status(200).send(ashileyResponse);
+            } else {
+                return response.status(406).send({ message: 'NOT ACCEPTABLE' })
+            }
+        } catch (e) {
+            console.log(e)
+            return response.status(500).send(e)
+        }
+    }
+
+    async trainNavy({ response }) {
+        try {
+
+            let ashileyTextBayesIdentification = new AshileyTextBayesIdentification();
+            let learned = await ashileyTextBayesIdentification.train();
+
+            if (learned) {
+                return response.status(200).send({ message: 'Ashiley learned' });
+            } else {
+                return response.status(406).send({ message: 'NOT ACCEPTABLE' });
+            }
+
+        } catch (e) {
+            console.log(e)
+            return response.status(500).send(e)
+        }
+    }
+
+
+    async predictNavy({ request, response }) {
+        try {
+
+            let phasers = request.all();
+
+            let ashileyTextBayesIdentification = new AshileyTextBayesIdentification();
+            let ashileyResponse = await ashileyTextBayesIdentification.executeBayes(phasers.text);
+
+            if (ashileyResponse) {
+                return response.status(200).send(ashileyResponse);
             } else {
                 return response.status(406).send({ message: 'NOT ACCEPTABLE' });
             }
