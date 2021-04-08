@@ -1,4 +1,4 @@
-ASHILEY NEURAL-NETWORK
+# ASHILEY NEURAL-NETWORK
 
 Ashiley is an open project aiming to perform the classification of images and texts with ML 100% in Javascript.
 Every system runs under Node.js and the Adonis.js framework along with Google's TensorFlow.js.
@@ -9,6 +9,7 @@ All templates and files are stored in binaries or .txt
 # 1 Installation
 ```
 git clone <br/>
+```
 ```
 git clone 
 ```
