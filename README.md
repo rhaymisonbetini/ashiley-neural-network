@@ -5,9 +5,15 @@ The entire system was designed not to rely on a database.
 All templates and files are stored in binaries or .txt
 
 # 1 Installation
-``
-git clone <br/>
+```
+git clone 
+```
+```
 cd ashiley-neural-network
+```
+```
 npm install
+```
+```
 adonis serves --dev
-``
+```
