@@ -14,7 +14,7 @@ All templates and files are stored in binaries or .txt
 
 # 1 Installation
 ```
-git clone <br/>
+git clone 
 ```
 ```
 git clone 
