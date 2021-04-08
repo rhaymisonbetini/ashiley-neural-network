@@ -26,9 +26,7 @@ adonis serves --dev
 
 All training documents are located inside the public folder.
 
-* Photos
-
- For photo training you must create the directories inside public / train so that the photos start exactly as the folder name + the number (if it is less than 10 it must contain the zero to the left)
+For photo training you must create the directories inside public / train so that the photos start exactly as the folder name + the number (if it is less than 10 it must contain the zero to the left)
 After inserting the correctly named photos you must go to the Controller BrainController and in the constant className insert the name of the new training class into the array
 In this version only JPG formats are allowed.
  
@@ -45,11 +43,17 @@ In this version only JPG formats are allowed.
    Google's TensorFlow. Level of accuracy very high.
 
 
- # 2.2 how to train - text
+# 2.2 how to train - text
 For training and classification of texts Ashiley has two forms of treatment. ML and Naive Bayes Classification.
 With this training our AI will be able to classify text with racist, extremist or improper content.
 
 Within the Helpers / Helpers.js file there is a method that returns an object array that expects a type and set of phrases related to this model.
+
+* text training routes <br/>
+
+GET: trainText -> ML-based training with gooogle's tensorFlow.js.
+
+GET: trainNavy -> Training based on the NavyBaiers Algorithm
 
 # 3 How use
 
