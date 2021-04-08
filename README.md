@@ -31,3 +31,15 @@ All training documents are located inside the public folder.
   For photo training you must create the directories inside public / train so that the photos start exactly as the folder name + the number (if it is less than 10 it must contain the zero to the left)
   After inserting the correctly named photos you must go to the Controller BrainController and in the constant className insert the name of the new training class into the array
  In this version only JPG formats are allowed.
+ 
+ * photo training routes
+    GET: trainRGB -> Training based on RGB color scale.
+    It is advisable to use it for comparison and color classification,
+    such as a can of coca-cola
+
+    GET: trainContour -> Training based on color scale and
+   photo outlines. In this training, resizing takes place
+   of pictures
+   
+    GET: trainNeuralNetWork -> ML-based training with
+    Google's TensorFlow. Level of accuracy very high.
