@@ -63,13 +63,13 @@ Within the Helpers / Helpers.js file there is a method that returns an object ar
 
 # 3 How use
 
-* image classification routes 
+* image classification routes <br/>
    METHOD: POST
    Ashiley hopes to receive a formData with an image file from
    nom "image" that must have a maximum of 2mb and be in JPG format.
 
 
-* text classification routes 
+* text classification routes <br/>
   METHOD: POST
   At this point Ashiley hopes to receive a text in an http request. The name of 
   the text field must be "text" and does not have a pre-set size or character limit.
