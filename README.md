@@ -13,9 +13,7 @@ The entire system was designed not to rely on a database.
 All templates and files are stored in binaries or .txt
 
 # 1 Installation
-```
-git clone 
-```
+
 ```
 git clone 
 ```
