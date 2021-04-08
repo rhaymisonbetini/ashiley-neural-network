@@ -51,9 +51,9 @@ Within the Helpers / Helpers.js file there is a method that returns an object ar
 
 * text training routes <br/>
 
-GET: trainText -> ML-based training with gooogle's tensorFlow.js.
+  GET: trainText -> ML-based training with gooogle's tensorFlow.js.
 
-GET: trainNavy -> Training based on the NavyBaiers Algorithm
+  GET: trainNavy -> Training based on the NavyBaiers Algorithm
 
 # 3 How use
 
@@ -61,3 +61,9 @@ GET: trainNavy -> Training based on the NavyBaiers Algorithm
    METHOD: POST
    Ashiley hopes to receive a formData with an image file from
    nom "image" that must have a maximum of 2mb and be in JPG format.
+
+
+* text classification routes 
+  METHOD: POST
+  At this point Ashiley hopes to receive a text in an http request. The name of 
+  the text field must be "text" and does not have a pre-set size or character limit.
