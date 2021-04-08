@@ -32,7 +32,7 @@ All training documents are located inside the public folder.
   After inserting the correctly named photos you must go to the Controller BrainController and in the constant className insert the name of the new training class into the array
  In this version only JPG formats are allowed.
  
- * photo training routes
+ * photo training routes <br/>
     GET: trainRGB -> Training based on RGB color scale.
     It is advisable to use it for comparison and color classification,
     such as a can of coca-cola
