@@ -1,31 +1,13 @@
-# Adonis fullstack application
+Ashiley is an open project aiming to perform the classification of images and texts with ML 100% in Javascript.
+Every system runs under Node.js and the Adonis.js framework along with Google's TensorFlow.js.
 
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
+The entire system was designed not to rely on a database.
+All templates and files are stored in binaries or .txt
 
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
-
-## Setup
-
-Use the adonis command to install the blueprint
-
-```bash
-adonis new yardstick
-```
-
-or manually clone the repo and then run `npm install`.
-
-
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
-```
+# 1 Installation
+``
+git clone
+cd ashiley-neural-network
+npm install
+adonis serves --dev
+``
