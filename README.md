@@ -45,7 +45,7 @@ All training documents are located inside the public folder.
    Google's TensorFlow. Level of accuracy very high.
 
 
-* image classification routes
+* image classification routes <br/>
    METHOD: POST
    Ashiley hopes to receive a formData with an image file from
    nom "image" that must have a maximum of 2mb and be in JPG format.
