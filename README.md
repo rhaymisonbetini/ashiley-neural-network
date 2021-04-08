@@ -55,7 +55,7 @@ Within the Helpers / Helpers.js file there is a method that returns an object ar
 
 * text training routes <br/>
 
-  GET: trainText -> ML-based training with gooogle's tensorFlow.js.
+  GET: trainText -> ML-based training with google's tensorFlow.js.
 
   GET: trainNavy -> Training based on the NavyBaiers Algorithm
 
