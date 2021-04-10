@@ -24,7 +24,7 @@ cd ashiley-neural-network
 npm install
 ```
 ```
-adonis serves --dev
+adonis serve --dev
 ```
 # 2.1 how to train - photos
 
