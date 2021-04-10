@@ -59,7 +59,7 @@ Within the Helpers / Helpers.js file there is a method that returns an object ar
 
   <b>GET:<b/> trainNavy -> Training based on the NavyBaiers Algorithm
 
-# 3 How use
+# 3 How to use
 
 * <b>image classification routes<b/> <br/>
    <b>METHOD: POST<b/>
