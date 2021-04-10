@@ -34,16 +34,16 @@ For photo training you must create the directories inside public / train so that
 After inserting the correctly named photos you must go to the Controller BrainController and in the constant className insert the name of the new training class into the array
 In this version only JPG formats are allowed.
  
- * photo training routes <br/>
-   GET: trainRGB -> Training based on RGB color scale.
+ * <b>photo training routes<b/> <br/>
+   <b>GET:<b/> trainRGB -> Training based on RGB color scale.
    It is advisable to use it for comparison and color <br/>
    classification, such as a can of coca-cola
 
-   GET: trainContour -> Training based on color scale and
+   <b>GET:<b/> trainContour -> Training based on color scale and
    photo outlines. In this training, resizing takes place
    of pictures
    
-   GET: trainNeuralNetWork -> ML-based training with
+   <b>GET:<b/> trainNeuralNetWork -> ML-based training with
    Google's TensorFlow. Level of accuracy very high.
 
 
@@ -53,21 +53,21 @@ With this training our AI will be able to classify text with racist, extremist o
 
 Within the Helpers / Helpers.js file there is a method that returns an object array that expects a type and set of phrases related to this model.
 
-* text training routes <br/>
+* <b>text training routes<b> <br/>
 
-  GET: trainText -> ML-based training with google's tensorFlow.js.
+  <b>GET:<b/> trainText -> ML-based training with google's tensorFlow.js.
 
-  GET: trainNavy -> Training based on the NavyBaiers Algorithm
+  <b>GET:<b/> trainNavy -> Training based on the NavyBaiers Algorithm
 
 # 3 How use
 
-* image classification routes <br/>
-   METHOD: POST
+* <b>image classification routes<b/> <br/>
+   <b>METHOD: POST<b/>
    Ashiley hopes to receive a formData with an image file from
    nom "image" that must have a maximum of 2mb and be in JPG format.
 
 
-* text classification routes <br/>
-  METHOD: POST
+* <b>text classification routes<b/> <br/>
+  <b>METHOD: POST<b/>
   At this point Ashiley hopes to receive a text in an http request. The name of 
   the text field must be "text" and does not have a pre-set size or character limit.
