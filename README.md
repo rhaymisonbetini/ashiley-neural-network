@@ -30,7 +30,7 @@ adonis serves --dev
 
 All training documents are located inside the public folder.
 
-For photo training you must create the directories inside public / train so that the photos start exactly as the folder name + the number (if it is less than 10 it must contain the zero to the left)
+For photo training you must create the directories inside public / train so that the photos start exactly as the folder name + the number (if it is less than 10 it must contain the zero to the left).
 After inserting the correctly named photos you must go to the Controller BrainController and in the constant className insert the name of the new training class into the array
 In this version only JPG formats are allowed.
  
