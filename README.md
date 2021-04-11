@@ -86,7 +86,7 @@ All right, now we must configure our AI. Our .env file must have the following c
 HOST=0.0.0.0
 PORT=3333
 NODE_ENV=development
-APP_URL=http: // $ {HOST}: $ {PORT}
+APP_URL=http://${HOST}:${PORT}
 CACHE_VIEWS=false
 APP_KEY=DgtuWIF6DlJq1UK4NjPlqwecPCzbvbfm
 
