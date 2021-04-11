@@ -128,3 +128,6 @@ pm2 list
 ```
 
 All right, now just start validating the images and texts sent to your system
+
+# 5 Authentication system
+* development
