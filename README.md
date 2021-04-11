@@ -12,6 +12,8 @@ Every system runs under Node.js and the Adonis.js framework along with Google's 
 The entire system was designed not to rely on a database.
 All templates and files are stored in binaries or .txt
 
+<img src="https://github.com/rhaymisonbetini/ashiley-neural-network/blob/main/public/prints/document.jpg" width="500" heigth="500">
+
 # 1 Installation
 
 ```
