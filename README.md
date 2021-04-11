@@ -72,12 +72,13 @@ Within the Helpers / Helpers.js file there is a method that returns an object ar
   At this point Ashiley hopes to receive a text in an http request. The name of 
   the text field must be "text" and does not have a pre-set size or character limit.
     
-# production environment
+# 4 production environment
 
   Para rodar nosso IA em ambiente de produção para validar nossas imagens e textos de vemos seguir os passos abaixo:
 
 instale inicialmente o PM2 :
-```npm install pm2 -g
+```
+npm install pm2 -g
 ```
 Tudo certo, agora devemos configurar nossa IA. Nosso arquivo .env deve possuir as seguintes caracteristicas
 ``` 
