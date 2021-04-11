@@ -16,6 +16,8 @@ This project aims to prevent inappropriate or vulgar photos from being inserted 
 
 We can also use Ashiley to validate specific systems. For example ... If you have a car sales website, you can train our AI to only <br/> accept pictures of cars, thus avoiding problems with other types of ads.
 
+I tried to develop our system in the simplest and most usual way possible. My purpose is that you just train and make requests, so you don't  <br/> have to worry about writing any lines of code.
+
 ![alt text](https://github.com/rhaymisonbetini/ashiley-neural-network/blob/main/public/prints/document.jpg)
 
 # 1 Installation
