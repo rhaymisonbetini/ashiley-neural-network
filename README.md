@@ -83,21 +83,21 @@ npm install pm2 -g
 All right, now we must configure our AI. Our .env file must have the following characteristics
 
 ```
-HOST = 0.0.0.0
-PORT = 3333
-NODE_ENV = development
-APP_URL = http: // $ {HOST}: $ {PORT}
-CACHE_VIEWS = false
-APP_KEY = DgtuWIF6DlJq1UK4NjPlqwecPCzbvbfm
+HOST=0.0.0.0
+PORT=3333
+NODE_ENV=development
+APP_URL=http: // $ {HOST}: $ {PORT}
+CACHE_VIEWS=false
+APP_KEY=DgtuWIF6DlJq1UK4NjPlqwecPCzbvbfm
 
-DB_CONNECTION = sqlite
-DB_HOST = 127.0.0.1
-DB_PORT = 3306
-DB_USER = root
-DB_PASSWORD =
-DB_DATABASE = adonis
+DB_CONNECTION=sqlite
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=
+DB_DATABASE=adonis
 
-SESSION_DRIVER = cookie
-HASH_DRIVER = bcrypt
+SESSION_DRIVER=cookie
+HASH_DRIVER=bcrypt
 
 ```
