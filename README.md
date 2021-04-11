@@ -77,10 +77,12 @@ Within the Helpers / Helpers.js file there is a method that returns an object ar
 To run our AI in a production environment to validate our images and texts, we follow the steps below:
 
 initially install PM2:
-`` npm install pm2 -g
-``
+```
+npm install pm2 -g
+```
 All right, now we must configure our AI. Our .env file must have the following characteristics
-``
+
+```
 HOST = 0.0.0.0
 PORT = 3333
 NODE_ENV = development
@@ -98,4 +100,4 @@ DB_DATABASE = adonis
 SESSION_DRIVER = cookie
 HASH_DRIVER = bcrypt
 
-``
+```
