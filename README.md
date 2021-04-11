@@ -101,3 +101,22 @@ SESSION_DRIVER=cookie
 HASH_DRIVER=bcrypt
 
 ```
+Now we are going to generate a new APP_KEY for our AI (in the future it will be used for authentication on our system).
+
+```
+ adonis key:generate
+```
+
+Okay, now it's time to get our AI to run.
+Within the root folder of the system, execute the command:
+
+``
+pm2 start server.js --name
+``
+Now run the command to see if everything is running:
+
+``
+pm2 list
+``
+
+All right, now just start validating the images and texts sent to your system
