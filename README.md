@@ -12,6 +12,10 @@ Every system runs under Node.js and the Adonis.js framework along with Google's 
 The entire system was designed not to rely on a database.
 All templates and files are stored in binaries or .txt
 
+This project aims to prevent inappropriate or vulgar photos from being inserted into our system, so racist, malicious and inappropriate <br/> descriptions or texts are posted in our environment.
+
+We can also use Ashiley to validate specific systems. For example ... If you have a car sales website, you can train our AI to only <br/> accept pictures of cars, thus avoiding problems with other types of ads.
+
 ![alt text](https://github.com/rhaymisonbetini/ashiley-neural-network/blob/main/public/prints/document.jpg)
 
 # 1 Installation
