@@ -130,4 +130,18 @@ pm2 list
 All right, now just start validating the images and texts sent to your system
 
 # 5 Authentication system
-* development
+When you run the command:
+```
+ adonis key:generate
+```
+
+a key is generated within our .env and we will use that key to authenticate requests.
+
+In the header of your request, place Authorization as the same value generated in your APP_KEY.
+
+In this way we guarantee that you will be the only one to use all the routes in the system, since two equal keys are not generated.
+
+When the route is triggered, our Middleware goes into action and checks ... If the flow is authorized, the flow is normal, if a 401 error is not returned.
+
+
+
