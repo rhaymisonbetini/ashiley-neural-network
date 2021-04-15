@@ -1,7 +1,7 @@
 
 # ASHILEY NEURAL-NETWORK
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![version](https://img.shields.io/badge/version-1.0.0-blue)
+![version](https://img.shields.io/badge/version-1.1.0-blue)
 
 ![alt text](https://i1.wp.com/sitn.hms.harvard.edu/wp-content/uploads/2017/08/Half-machine-half-human-brain-2.jpg?resize=960%2C600&ssl=1)
 
