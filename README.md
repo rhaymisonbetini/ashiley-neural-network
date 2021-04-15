@@ -61,7 +61,7 @@ With this training our AI will be able to classify text with racist, extremist o
 
 Within the Helpers / Helpers.js file there is a method that returns an object array that expects a type and set of phrases related to this model.
 
-* <b>text training routes<b> <br/>
+* <b>text training routes<b/> <br/>
 
   <b>GET:<b/> trainText -> ML-based training with google's tensorFlow.js.
 
