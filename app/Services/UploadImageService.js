@@ -10,7 +10,7 @@ class UploadImageService {
         const profilePic = request.file('image', {
             types: ['image'],
             size: '2mb',
-            extnames: ['jpg']
+            extnames: ['jpg','jpeg']
         })
 
         let name = Date.now().toString();

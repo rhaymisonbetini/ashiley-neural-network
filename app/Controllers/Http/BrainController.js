@@ -8,8 +8,9 @@ const AshileyTextBayesIdentification = use("App/Cortex/AshileyTextBayesIdentific
 
 const UploadImageService = use('App/Services/UploadImageService');
 
-const className = ['document', 'normal', 'porn', 'sexy', 'ugly-gesture'];
-const limit = 15;
+// const className = ['document', 'normal', 'porn', 'sexy', 'ugly-gesture'];
+const className = ['p1', 'p2', 'p3', 'p4', 'p5','p6','p7'];
+const limit = 100;
 
 class BrainController {
 
@@ -129,11 +130,11 @@ class BrainController {
             let uploadImageService = new UploadImageService();
 
             let fileName = await uploadImageService.uploadFile(request);
-
+            console.log(fileName)
             let ashileyRNAPredict = new AshileyRNAPredict();
             let ashileyResponse = await ashileyRNAPredict.predictRGBChanels(fileName, className);
 
-            await uploadImageService.removeFile(fileName);
+            // await uploadImageService.removeFile(fileName);
 
             if (ashileyResponse) {
                 return response.status(200).send(ashileyResponse);

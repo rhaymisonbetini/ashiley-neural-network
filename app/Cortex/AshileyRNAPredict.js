@@ -14,13 +14,12 @@ const config = {
     activation: 'sigmoid',
     bias: 0,
     hiddenLayers: 1,
-    model: 'img-class',
+    model: 'aluminium',
     dense: false,
     nOutputs: 1,
     formatIO: false
 };
 
-let ashileyResponse = {};
 
 class AshileyRNAPredict {
 
@@ -32,15 +31,10 @@ class AshileyRNAPredict {
         let y = [];
 
         for (let k = 0; k < className.length; k++) {
-
-            const dir = Helpers.publicPath(`train/${className[k]}`);
-
+            const dir = Helpers.publicPath(`aluminum/${className[k]}`);
             for (let i = 1; i <= limit; i++) {
                 let index = i.toString();
-                console.log(index);
-                i <= 9 ? index = '0'.concat(index) : index = i;
-
-                await getColors(path.join(dir, `${className[k]}${index}.jpg`)).then(async (colors) => {
+                await getColors(path.join(dir, `(${index}).jpeg`)).then(async (colors) => {
                     let rgbChanelsService = new RGBChanelsService()
                     let arrayColors = [];
                     arrayColors = await rgbChanelsService.returnRGBChanels(colors);
@@ -64,23 +58,29 @@ class AshileyRNAPredict {
 
 
     async predictRGBChanels(fileName, className) {
-
+        let ashileyResponse = [];
+        let possibilities = [];
+        let inMemoryan = [];
         await getColors(path.join(Helpers.publicPath(`files/`), `${fileName}.jpg`)).then(async (colors) => {
 
             let rgbChanelsService = new RGBChanelsService()
             let arrayColors = await rgbChanelsService.returnRGBChanels(colors);
 
             let rnaTensorFlowService = new RNATensorFlowService(config);
-
             let predict = await rnaTensorFlowService.predict(arrayColors);
-            ashileyResponse.classification= className[Number(parseFloat(predict[0]).toFixed(0))].toString().trim();
-          
+            await predict.forEach((pred) => {
+                pred.index = className[Number(parseFloat(pred.index[0]).toFixed(0))].toString().trim();
+                let verification = inMemoryan.find(el => el == pred.index);
+                if (!verification) {
+                    possibilities.push(pred);
+                    inMemoryan.push(pred.index)
+                }
+            })
+            ashileyResponse = predict;
         });
 
         return ashileyResponse;
     }
-
-
 }
 
 module.exports = AshileyRNAPredict;

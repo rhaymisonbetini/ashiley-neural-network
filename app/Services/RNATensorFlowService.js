@@ -9,7 +9,7 @@ class RNATensorFlowService {
 		(Config.hiddenLayers) ? this.hiddenLayers = Number(Config.hiddenLayers) : this.hiddenLayers = 0;
 		(Config.model) ? this.model = Config.model.toString().trim() : this.model = 'model';
 		(Config.dense) ? this.dense = Boolean(Config.dense) : this.dense = false;
-		(Config.nOutputs) ? this.nOutputs = Number(Config.nOutputs) : this.nOutputs = 1;
+		(Config.nOutputs) ? this.nOutputs = Number(Config.nOutputs) : this.nOutputs = 5;
 		(Config.formatIO) ? this.formatIO = Boolean(Config.formatIO) : this.formatIO = true;
 		this.divMulI = this.lerDivMulI();
 		this.divMulO = this.lerDivMulO();
@@ -380,8 +380,7 @@ class RNATensorFlowService {
 		}
 	}
 
-	predict(Inputs = [], Config = {}) {
-		let result = [];
+	async predict(Inputs = [], Config = {}) {
 		if (this.formatIO) Inputs = this.diminuir(Inputs, 'i');
 
 		let model = this.model;
@@ -401,71 +400,85 @@ class RNATensorFlowService {
 			for (let i = 0; i < objJSON.length; i++) {
 				let tfInput2 = tf.tensor(objJSON[i].Inputs);
 				let tempSub = tfInput1.sub(tfInput2).abs().sum().arraySync();
-
 				arrSub.push(tempSub);
 			}
 
-			for (let n = 0; n < nOutputs; n++) {
-				let index = 0;
-				let minimo = tf.tensor(arrSub).min().arraySync();
-				for (let i = 0; i < arrSub.length; i++) {
-					if (minimo == arrSub[i]) index = i;
-				}
-
-				const arrInput = this.validaInput(Inputs);
-				const arrInputWeight = this.toArrayTensor(objJSON[index].arrInputWeight);
-				const matrixHiddenWeight = this.toMatrixTensor(objJSON[index].matrixHiddenWeight);
-				const Bias = objJSON[index].Bias;
-				const Activation = objJSON[index].Activation;
-				const hiddenLayers = objJSON[index].hiddenLayers;
-				const dense = objJSON[index].dense;
-				this.divMulI = objJSON[index].divMulI;
-				this.divMulO = objJSON[index].divMulO;
-
-				let tfProd = [];
-				if (dense) {
-					for (let x = 0; x < arrInput.length; x++) {
-						let sumProd = 0;
-						for (let y = 0; y < arrInputWeight.length; y++) {
-							sumProd += Number(arrInput[x].mul(arrInputWeight[y]).arraySync());
-						}
-						tfProd.push(tf.tensor(Number(sumProd)));
-					}
-
-					for (let x = 0; x < hiddenLayers; x++) {
-						for (let y = 0; y < arrInput.length; y++) {
-							tfProd[y] = tfProd[y].mul(matrixHiddenWeight[y][x]);
-						}
-					}
-				} else {
-					for (let x = 0; x < arrInput.length; x++) {
-						tfProd.push(arrInput[x].mul(arrInputWeight[x]));
-					}
-
-					for (let x = 0; x < arrInput.length; x++) {
-						for (let y = 0; y < hiddenLayers; y++) {
-							tfProd[x] = tfProd[x].mul(matrixHiddenWeight[x][y]);
-						}
-					}
-				}
-				let sum = tf.scalar(0);
-				for (let x = 0; x < arrInput.length; x++) {
-					sum = sum.add(tfProd[x]);
-				}
-				sum.add(tf.scalar(Bias));
-
-				let tfOutput = this.funcaoAtivacao(sum, Activation);
-				result.push(tfOutput.arraySync()[0]);
-
-				arrSub.shift();
+			let tenFirst = arrSub.slice(0, 10);
+			let responseFinal = [];
+			for (let i = 0; i < 9; i++) {
+				let resp = await this.classificatrion(i, tenFirst, Inputs, objJSON)
+				responseFinal.push(resp);
 			}
-			let r = tf.tensor(result).reverse().arraySync();
-			if (this.formatIO) r = this.aumentar(r);
-			return r;
+			return responseFinal;
+
 		} else {
-			return result;
+			return [];
 		}
 	}
+
+	async classificatrion(index, arrSub, Inputs, objJSON) {
+		let result = [];
+		const arrInput = this.validaInput(Inputs);
+		const arrInputWeight = this.toArrayTensor(objJSON[index].arrInputWeight);
+		const matrixHiddenWeight = this.toMatrixTensor(objJSON[index].matrixHiddenWeight);
+		const Bias = objJSON[index].Bias;
+		const Activation = objJSON[index].Activation;
+		const hiddenLayers = objJSON[index].hiddenLayers;
+		const dense = objJSON[index].dense;
+		this.divMulI = objJSON[index].divMulI;
+		this.divMulO = objJSON[index].divMulO;
+
+		let tfProd = [];
+		if (dense) {
+			for (let x = 0; x < arrInput.length; x++) {
+				let sumProd = 0;
+				for (let y = 0; y < arrInputWeight.length; y++) {
+					sumProd += Number(arrInput[x].mul(arrInputWeight[y]).arraySync());
+				}
+				tfProd.push(tf.tensor(Number(sumProd)));
+			}
+
+			for (let x = 0; x < hiddenLayers; x++) {
+				for (let y = 0; y < arrInput.length; y++) {
+					tfProd[y] = tfProd[y].mul(matrixHiddenWeight[y][x]);
+				}
+			}
+		} else {
+			for (let x = 0; x < arrInput.length; x++) {
+				tfProd.push(arrInput[x].mul(arrInputWeight[x]));
+			}
+
+			for (let x = 0; x < arrInput.length; x++) {
+				for (let y = 0; y < hiddenLayers; y++) {
+					tfProd[x] = tfProd[x].mul(matrixHiddenWeight[x][y]);
+				}
+			}
+		}
+		let sum = tf.scalar(0);
+		for (let x = 0; x < arrInput.length; x++) {
+			sum = sum.add(tfProd[x]);
+		}
+		sum.add(tf.scalar(Bias));
+		let tfOutput = this.funcaoAtivacao(sum, Activation);
+		result.push(tfOutput.arraySync()[0]);
+
+		arrSub.shift();
+		let r = tf.tensor(result).reverse().arraySync();
+		if (this.formatIO) r = this.aumentar(r);
+
+		const less = tf.tensor(arrSub).min().arraySync();
+		const plus = tf.tensor(arrSub).max().arraySync();
+		const percentPositive = parseFloat(100 - ((less / (less + plus)) * 100)).toFixed(8);
+		const percentNegative = parseFloat(100 - percentPositive).toFixed(8);
+
+		return {
+			index: r,
+			positive: percentPositive,
+			negative: percentNegative
+		};
+
+	}
+
 }
 
 module.exports = RNATensorFlowService;

@@ -3,7 +3,7 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.group(() => {
+// Route.group(() => {
     //train routes image color
     Route.get('/trainRGB', 'BrainController.ashileyTrainRGBChanels');
     Route.post('/predictRGB', 'BrainController.predictRGBChanels');
@@ -26,4 +26,4 @@ Route.group(() => {
     Route.get('/trainNavy', 'BrainController.trainNavy');
     Route.post('/predictNavy', 'BrainController.predictNavy');
     
-}).middleware(['authAshiley'])
+// }).middleware(['authAshiley'])
